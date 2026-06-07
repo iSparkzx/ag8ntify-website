@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://www.ag8ntify.com/sitemap.xml
+Host: https://www.ag8ntify.com
