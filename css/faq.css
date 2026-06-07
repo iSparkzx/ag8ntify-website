@@ -1,0 +1,12 @@
+/* FAQ Accordion */
+.faq-list{margin-top:48px;max-width:800px}
+.faq-item{border-bottom:1px solid rgba(255,255,255,.08)}
+.faq-question{width:100%;background:none;border:none;color:var(--fg-warm);font-weight:600;font-size:1.1rem;text-align:left;padding:22px 48px 22px 0;cursor:pointer;position:relative;transition:color .25s;line-height:1.4}
+.faq-question:hover{color:var(--gold-mid)}
+.faq-question .faq-icon{position:absolute;right:0;top:50%;transform:translateY(-50%);width:28px;height:28px;border:1.5px solid rgba(255,255,255,.18);border-radius:50%;display:flex;align-items:center;justify-content:center;transition:transform .3s,border-color .3s;color:var(--fg-warm);font-size:1.2rem;line-height:1}
+.faq-question:hover .faq-icon{border-color:var(--gold-mid);color:var(--gold-mid)}
+.faq-item.open .faq-icon{transform:translateY(-50%) rotate(45deg);border-color:var(--gold-mid);color:var(--gold-mid)}
+.faq-answer{max-height:0;overflow:hidden;transition:max-height .35s ease;padding:0 0 0 0;color:var(--fg-cool);font-size:1rem;line-height:1.7}
+.faq-item.open .faq-answer{max-height:600px;padding:0 0 24px 0}
+.faq-answer p{margin-bottom:16px}
+.faq-answer p:last-child{margin-bottom:0}

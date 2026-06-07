@@ -77,10 +77,10 @@
   "@context": "https://schema.org",
   "@type": "FAQPage",
   "mainEntity": [
-    {"@type":"Question","name":"How does AI automation actually work?","acceptedAnswer":{"@type":"Answer","text":"AI automation uses intelligent agents powered by large language models and machine learning to perform tasks humans previously did manually. These agents handle ambiguity, context, and variation — making them suitable for complex business workflows."}},
+    {"@type":"Question","name":"How does AI automation actually work?","acceptedAnswer":{"@type":"Answer","text":"AI automation uses intelligent agents powered by large language models and machine learning to perform tasks humans previously did manually. These agents handle ambiguity, context, and variation - making them suitable for complex business workflows."}},
     {"@type":"Question","name":"How long does it take to implement AI agents?","acceptedAnswer":{"@type":"Answer","text":"Most implementations go live in 2-4 weeks. A simple lead qualification agent deploys in under 2 weeks. A full AI Operating System typically takes 6-8 weeks. Start with highest-impact workflow, prove ROI, then expand."}},
     {"@type":"Question","name":"What is the ROI of AI automation?","acceptedAnswer":{"@type":"Answer","text":"Clients see ROI in 30-45 days. Typical returns: 60-94% reduction in manual data entry, 3-5x more qualified leads, 28% faster time-to-close, 14+ hours/week reclaimed per employee."}},
-    {"@type":"Question","name":"Will AI agents replace my employees?","acceptedAnswer":{"@type":"Answer","text":"No. AI agents replace tasks, not people. The best results come from using AI to eliminate repetitive work — freeing humans for strategy, creativity, and relationships."}},
+    {"@type":"Question","name":"Will AI agents replace my employees?","acceptedAnswer":{"@type":"Answer","text":"No. AI agents replace tasks, not people. The best results come from using AI to eliminate repetitive work - freeing humans for strategy, creativity, and relationships."}},
     {"@type":"Question","name":"What tools do you integrate with?","acceptedAnswer":{"@type":"Answer","text":"100+ platforms including Salesforce, HubSpot, Shopify, Meta Ads, Google Ads, Zendesk, Slack, Notion, Stripe, QuickBooks, and any platform with a public API."}},
     {"@type":"Question","name":"Is my data secure?","acceptedAnswer":{"@type":"Answer","text":"Security is built into every layer: encrypted connections, role-based access, audit logging. We do not train AI models on your data. SOC 2-compliant architectures available."}},
     {"@type":"Question","name":"How much does AI automation cost?","acceptedAnswer":{"@type":"Answer","text":"Single workflow: from $3,500. Full AI Operating System: $15,000-$45,000. Most clients recover investment within 60-90 days."}},
@@ -95,6 +95,7 @@
 <link rel="stylesheet" href="css/styles.css" />
 <link rel="stylesheet" href="css/sections.css" />
 <link rel="stylesheet" href="css/booking.css" />
+<link rel="stylesheet" href="css/faq.css" />
 <script type="module" src="https://cdn.jsdelivr.net/npm/@mux/mux-video@0"></script>
 </head>
 <body>
@@ -106,13 +107,15 @@
 <nav class="nav" id="nav">
   <div class="nav-inner">
     <a class="brand" href="#top" aria-label="Ag8ntify home">
-      <img class="brand-logo" src="assets/logo-full.png" alt="Ag8ntify — Many Agents. One Intelligence."  loading="lazy" width="628" height="114"/>
+      <img class="brand-logo" src="assets/logo-full.png" alt="Ag8ntify - Many Agents. One Intelligence."  loading="lazy" width="628" height="114"/>
     </a>
     <div class="nav-links">
       <a href="#problem">The Problem</a>
       <a href="#system">The System</a>
       <a href="#results">Results</a>
       <a href="#capabilities">Capabilities</a>
+      <a href="/ai-lead-generation/">Lead Gen</a>
+      <a href="/case-studies/">Results</a>
     </div>
     <div class="nav-cta">
       <a href="#book" class="btn btn-primary">Book Strategy Call <span class="arr">→</span></a>
@@ -385,6 +388,38 @@
   </div>
 </section>
 
+<!-- ============ SERVICES GRID ============ -->
+<section class="section-pad" id="services" style="background:var(--bg-2);">
+  <div class="wrap">
+    <div class="shead reveal">
+      <span class="eyebrow">Services</span>
+      <h2 class="display">Explore what we <span class="gold-ink">build.</span></h2>
+    </div>
+    <div class="uc-grid reveal" data-d="2" style="margin-top:48px;">
+      <a href="/ai-lead-generation/" class="uc" style="text-decoration:none;color:inherit;">
+        <div class="uc-ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 8h8M16 8h4M4 16h4M12 16h8"/><circle cx="14" cy="8" r="2.3"/><circle cx="10" cy="16" r="2.3"/></svg></div>
+        <span class="uk" style="color:var(--gold-mid)">Lead Generation</span><h3>AI Lead Gen</h3><p>Capture, qualify, and route prospects 24/7. 3-5x more qualified leads in 60 days.</p><div class="um">Automated pipelines -</div>
+      </a>
+      <a href="/crm-automation/" class="uc" style="text-decoration:none;color:inherit;">
+        <div class="uc-ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="8.5"/><circle cx="12" cy="12" r="4"/><circle cx="12" cy="12" r="0.8" fill="currentColor"/></svg></div>
+        <span class="uk" style="color:var(--gold-mid)">CRM</span><h3>CRM Automation</h3><p>Clean data, zero manual entry. 94% fewer hours on data maintenance.</p><div class="um">Always-accurate records -</div>
+      </a>
+      <a href="/ai-sales-automation/" class="uc" style="text-decoration:none;color:inherit;">
+        <div class="uc-ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 3l8 4.2-8 4.2-8-4.2 8-4.2z"/><path d="M4 12l8 4.2 8-4.2M4 16.2l8 4.2 8-4.2"/></svg></div>
+        <span class="uk" style="color:var(--gold-mid)">Sales</span><h3>Sales Automation</h3><p>Close deals 28% faster. Automated follow-up, proposals, and pipeline alerts.</p><div class="um">More closes, less admin -</div>
+      </a>
+      <a href="/ai-analytics/" class="uc" style="text-decoration:none;color:inherit;">
+        <div class="uc-ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 17l5.5-5.5 4 4L20 7"/><path d="M16 7h4v4"/></svg></div>
+        <span class="uk" style="color:var(--gold-mid)">Analytics</span><h3>AI Analytics</h3><p>Live reports with zero manual pulling. Board-ready insights in real-time.</p><div class="um">Zero reporting hours -</div>
+      </a>
+    </div>
+    <div style="text-align:center;margin-top:40px;">
+      <a href="/case-studies/" class="btn btn-ghost">See Client Results <span class="arr">-</span></a>
+      <a href="/blog/" class="btn btn-ghost" style="margin-left:16px;">Read the Blog <span class="arr">-</span></a>
+    </div>
+  </div>
+</section>
+
 <!-- ============ USE CASES ============ -->
 <section class="section-pad" id="usecases" style="background:var(--bg-2); border-block:1px solid var(--line);">
   <div class="wrap">
@@ -484,7 +519,7 @@
 
         <div class="qual-step active" data-step="0">
           <div class="qq">Where are your biggest bottlenecks?</div>
-          <div class="qhint">Select all that apply — we focus the roadmap where it pays off fastest.</div>
+          <div class="qhint">Select all that apply - we focus the roadmap where it pays off fastest.</div>
           <div class="qopts" data-q="bottleneck" data-multi>
             <button class="qopt"><span class="qbox">✓</span> Leads generation &amp; pipeline</button>
             <button class="qopt"><span class="qbox">✓</span> Sales follow-up &amp; closing</button>
@@ -529,36 +564,77 @@
   <div class="wrap">
     <span class="eyebrow">FAQ</span>
     <h2 class="display">Questions about <span class="gold-ink">AI automation.</span></h2>
-    <div style="margin-top:48px;max-width:800px;">
-      <h3>How does AI automation actually work?</h3>
-      <p>AI automation uses intelligent agents — software systems powered by large language models and machine learning — to perform tasks that humans previously did manually. These agents can read emails, update databases, send messages, analyze data, make decisions based on rules, and learn from feedback. Unlike traditional automation (which follows rigid if-then logic), AI agents handle ambiguity, context, and variation — making them suitable for complex business workflows.</p>
-
-      <h3>How long does it take to implement AI agents?</h3>
-      <p>Most implementations go live in 2-4 weeks. A simple lead qualification agent can be deployed in under 2 weeks. A full AI Operating System with CRM automation, sales sequences, and analytics typically takes 6-8 weeks. The key is starting with your highest-impact workflow, proving ROI, then expanding — not trying to automate everything at once.</p>
-
-      <h3>What is the ROI of AI automation?</h3>
-      <p>Clients typically see ROI in the first 30-45 days. Common returns include: 60-94% reduction in manual data entry hours, 3-5× increase in qualified leads, 28% faster time-to-close, and 14+ hours per week reclaimed per employee. The cost of implementation is usually recovered within 60 days through labor savings and revenue acceleration.</p>
-
-      <h3>Will AI agents replace my employees?</h3>
-      <p>No. AI agents replace <em>tasks</em>, not people. The businesses getting the best results use AI to eliminate repetitive, low-value work — freeing humans for strategy, creativity, relationship-building, and complex problem-solving. Your team becomes more valuable, not less. One client described it as "giving every employee an executive assistant."</p>
-
-      <h3>What tools and platforms do you integrate with?</h3>
-      <p>We integrate with 100+ platforms including Salesforce, HubSpot, Pipedrive, Shopify, Meta Ads, Google Ads, Zendesk, Intercom, Slack, Notion, Airtable, Stripe, QuickBooks, Gmail, Outlook, Google Calendar, Calendly, and any platform with a public API. If you have data somewhere, our agents can reach it.</p>
-
-      <h3>Is my data secure with AI automation?</h3>
-      <p>Security is built into every layer. We use encrypted connections, role-based access controls, and audit logging for all agent actions. We do not train AI models on your proprietary data. For regulated industries, we offer on-premise deployments and SOC 2-compliant architectures.</p>
-
-      <h3>How much does AI automation cost?</h3>
-      <p>Pricing depends on scope, integrations, and agent complexity. A single workflow automation starts around $3,500. A full AI Operating System with 5-7 integrated agents typically ranges from $15,000 to $45,000. Most clients recover the full investment within 60-90 days. We offer a free 30-minute strategy call to scope your specific needs and provide an exact quote.</p>
-
-      <h3>What happens if an AI agent makes a mistake?</h3>
-      <p>All agent actions are logged and reviewable. High-stakes actions (like sending a proposal or updating pricing) include human approval gates. Agents learn from corrections — when you fix an error, the system remembers and adjusts. Our average accuracy rate after the first 30 days is 94%+, with continuous improvement over time.</p>
-
-      <h3>Can I see examples of AI automation in action?</h3>
-      <p>Yes. Our <a href="/case-studies/">case studies page</a> includes detailed before-and-after breakdowns from ecommerce, SaaS, professional services, and manufacturing clients. Each case covers the problem, solution architecture, implementation timeline, and measurable results. You can also book a strategy call to see a live demo tailored to your industry.</p>
-
-      <h3>How do I get started?</h3>
-      <p>Book a free 30-minute strategy call. We will audit your current operations, identify your biggest automation opportunities, and show you exactly where AI will deliver the fastest ROI. No commitment required. <a href="/#book">Book now →</a></p>
+    <div class="faq-list">
+      <div class="faq-item">
+        <button class="faq-question" type="button" aria-expanded="false">How does AI automation actually work?<span class="faq-icon">+</span></button>
+        <div class="faq-answer">
+          <p>AI automation uses intelligent agents - software systems powered by large language models and machine learning - to perform tasks that humans previously did manually. These agents can read emails, update databases, send messages, analyze data, make decisions based on rules, and learn from feedback.</p>
+          <p>Unlike traditional automation (which follows rigid if-then logic), AI agents handle ambiguity, context, and variation - making them suitable for complex business workflows.</p>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question" type="button" aria-expanded="false">How long does it take to implement AI agents?<span class="faq-icon">+</span></button>
+        <div class="faq-answer">
+          <p>Most implementations go live in 2-4 weeks. A simple lead qualification agent can be deployed in under 2 weeks. A full AI Operating System with CRM automation, sales sequences, and analytics typically takes 6-8 weeks.</p>
+          <p>The key is starting with your highest-impact workflow, proving ROI, then expanding - not trying to automate everything at once.</p>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question" type="button" aria-expanded="false">What is the ROI of AI automation?<span class="faq-icon">+</span></button>
+        <div class="faq-answer">
+          <p>Clients typically see ROI in the first 30-45 days. Common returns include: 60-94% reduction in manual data entry hours, 3-5x increase in qualified leads, 28% faster time-to-close, and 14+ hours per week reclaimed per employee.</p>
+          <p>The cost of implementation is usually recovered within 60 days through labor savings and revenue acceleration.</p>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question" type="button" aria-expanded="false">Will AI agents replace my employees?<span class="faq-icon">+</span></button>
+        <div class="faq-answer">
+          <p>No. AI agents replace <em>tasks</em>, not people. The businesses getting the best results use AI to eliminate repetitive, low-value work - freeing humans for strategy, creativity, relationship-building, and complex problem-solving.</p>
+          <p>Your team becomes more valuable, not less. One client described it as "giving every employee an executive assistant."</p>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question" type="button" aria-expanded="false">What tools and platforms do you integrate with?<span class="faq-icon">+</span></button>
+        <div class="faq-answer">
+          <p>We integrate with 100+ platforms including Salesforce, HubSpot, Pipedrive, Shopify, Meta Ads, Google Ads, Zendesk, Intercom, Slack, Notion, Airtable, Stripe, QuickBooks, Gmail, Outlook, Google Calendar, Calendly, and any platform with a public API.</p>
+          <p>If you have data somewhere, our agents can reach it.</p>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question" type="button" aria-expanded="false">Is my data secure with AI automation?<span class="faq-icon">+</span></button>
+        <div class="faq-answer">
+          <p>Security is built into every layer. We use encrypted connections, role-based access controls, and audit logging for all agent actions.</p>
+          <p>We do not train AI models on your proprietary data. For regulated industries, we offer on-premise deployments and SOC 2-compliant architectures.</p>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question" type="button" aria-expanded="false">How much does AI automation cost?<span class="faq-icon">+</span></button>
+        <div class="faq-answer">
+          <p>Pricing depends on scope, integrations, and agent complexity. A single workflow automation starts around $3,500. A full AI Operating System with 5-7 integrated agents typically ranges from $15,000 to $45,000.</p>
+          <p>Most clients recover the full investment within 60-90 days. We offer a free 30-minute strategy call to scope your specific needs and provide an exact quote.</p>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question" type="button" aria-expanded="false">What happens if an AI agent makes a mistake?<span class="faq-icon">+</span></button>
+        <div class="faq-answer">
+          <p>All agent actions are logged and reviewable. High-stakes actions (like sending a proposal or updating pricing) include human approval gates.</p>
+          <p>Agents learn from corrections - when you fix an error, the system remembers and adjusts. Our average accuracy rate after the first 30 days is 94%+, with continuous improvement over time.</p>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question" type="button" aria-expanded="false">Can I see examples of AI automation in action?<span class="faq-icon">+</span></button>
+        <div class="faq-answer">
+          <p>Yes. Our <a href="/case-studies/">case studies page</a> includes detailed before-and-after breakdowns from ecommerce, SaaS, professional services, and manufacturing clients. Each case covers the problem, solution architecture, implementation timeline, and measurable results.</p>
+          <p>You can also book a strategy call to see a live demo tailored to your industry.</p>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question" type="button" aria-expanded="false">How do I get started?<span class="faq-icon">+</span></button>
+        <div class="faq-answer">
+          <p>Book a free 30-minute strategy call. We will audit your current operations, identify your biggest automation opportunities, and show you exactly where AI will deliver the fastest ROI.</p>
+          <p>No commitment required. <a href="/#book">Book now -</a></p>
+        </div>
+      </div>
     </div>
   </div>
 </section>
@@ -569,14 +645,16 @@
     <div class="footer-top">
       <div>
         <a class="brand brand-foot" href="#top" aria-label="Ag8ntify home">
-          <img class="brand-logo" src="assets/logo-full.png" alt="Ag8ntify — Many Agents. One Intelligence."  loading="lazy" width="628" height="114"/>
+          <img class="brand-logo" src="assets/logo-full.png" alt="Ag8ntify - Many Agents. One Intelligence."  loading="lazy" width="628" height="114"/>
         </a>
         <p class="tagline">The AI Operating System for autonomous business.</p>
       </div>
       <div class="footer-links">
         <a href="#book">Book Strategy Call</a>
-        <a href="#system">AI Operating System</a>
-        <a href="#capabilities">Capabilities</a>
+        <a href="/ai-lead-generation/">AI Lead Gen</a>
+        <a href="/crm-automation/">CRM Automation</a>
+        <a href="/case-studies/">Case Studies</a>
+        <a href="/blog/">Blog</a>
       </div>
     </div>
     <div class="footer-bottom">
@@ -631,5 +709,22 @@
 <script src="js/form.js" defer></script>
 <script src="js/fx.js" defer></script>
 <script src="js/booking.js" defer></script>
+<script>
+// FAQ Accordion
+document.querySelectorAll('.faq-question').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const item = btn.closest('.faq-item');
+    const isOpen = item.classList.contains('open');
+    document.querySelectorAll('.faq-item').forEach(i => {
+      i.classList.remove('open');
+      i.querySelector('.faq-question').setAttribute('aria-expanded','false');
+    });
+    if (!isOpen) {
+      item.classList.add('open');
+      btn.setAttribute('aria-expanded','true');
+    }
+  });
+});
+</script>
 </body>
 </html>
