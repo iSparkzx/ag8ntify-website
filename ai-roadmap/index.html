@@ -1,0 +1,633 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>AI Integration Roadmap — Ag8ntify</title>
+<meta name="description" content="Marketing Department AI Integration & Readiness Roadmap. 5-phase deployment from baseline process mapping to autonomous AI operations." />
+<link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Geist+Mono:wght@400;500&display=swap" />
+<style>
+/* ============================================================
+   AG8NTIFY ROADMAP PAGE
+   ============================================================ */
+
+:root {
+  --bg:        #050505;
+  --bg-2:      #0d0d0d;
+  --bg-3:      #141414;
+  --surface:   rgba(255,255,255,0.022);
+  --line:      rgba(255,255,255,0.085);
+  --line-2:    rgba(255,255,255,0.15);
+  --white:     #FFFFFF;
+  --cream:     #F2F2F2;
+  --muted:     #9ea1a6;
+  --muted-2:   #6c6f74;
+  --faint:     #3e4044;
+  --gold:      #D9A441;
+  --gold-bright: #EFC677;
+  --gold-glow: rgba(217,164,65,0.38);
+  --green:     #74D69B;
+  --blue:      #7BA9FF;
+  --violet:    #B79CFF;
+  --rose:      #F09590;
+  --amber:     #F0B75E;
+  --cyan:      #5DD9F0;
+
+  --sans: 'Inter', system-ui, -apple-system, sans-serif;
+  --mono: 'Geist Mono', ui-monospace, monospace;
+  --maxw: 1140px;
+  --gutter: clamp(20px, 5vw, 64px);
+  --radius: 16px;
+  --ease: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  background: var(--bg);
+  color: var(--cream);
+  font-family: var(--sans);
+  font-weight: 400;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+a { color: inherit; text-decoration: none; }
+img, svg { display: block; max-width: 100%; }
+
+/* ── ambient grain ── */
+.grain {
+  position: fixed; inset: 0; z-index: 1; pointer-events: none;
+  opacity: 0.4; mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+/* ── nav ── */
+.nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  border-bottom: 1px solid var(--line);
+  background: rgba(5,5,5,0.8); backdrop-filter: blur(18px);
+}
+.nav-inner {
+  display: flex; align-items: center; justify-content: space-between;
+  height: 64px; max-width: var(--maxw); margin: 0 auto;
+  padding-inline: var(--gutter);
+}
+.nav-logo { font-family: var(--sans); font-size: 15px; font-weight: 700; color: var(--white); letter-spacing: -0.02em; }
+.nav-logo span { color: var(--gold); }
+.nav-back {
+  font-size: 13px; color: var(--muted); display: inline-flex; align-items: center; gap: 6px;
+  transition: color 0.25s;
+}
+.nav-back:hover { color: var(--gold); }
+
+/* ── hero ── */
+.hero {
+  min-height: 55vh; display: flex; flex-direction: column;
+  justify-content: center; align-items: center; text-align: center;
+  padding: 120px var(--gutter) 60px; position: relative; z-index: 2;
+}
+.hero .eyebrow {
+  font-size: 12px; font-weight: 600; letter-spacing: 0.26em; text-transform: uppercase;
+  color: var(--gold); display: inline-flex; align-items: center; gap: 0.7em; margin-bottom: 20px;
+}
+.hero .eyebrow::before {
+  content: ''; width: 5px; height: 5px; border-radius: 50%;
+  background: var(--gold); box-shadow: 0 0 10px var(--gold-glow);
+}
+.hero h1 {
+  font-family: var(--sans); font-weight: 800; font-size: clamp(36px, 6vw, 72px);
+  line-height: 1.05; letter-spacing: -0.03em; color: var(--white); margin-bottom: 20px;
+}
+.hero p.lead {
+  font-size: clamp(16px, 1.5vw, 20px); color: var(--muted);
+  max-width: 52ch; line-height: 1.65;
+}
+
+/* ── horizontal scroll progress line ── */
+.progress-track {
+  position: fixed; top: 64px; left: 0; right: 0; z-index: 99;
+  height: 2px; background: rgba(255,255,255,0.05);
+}
+.progress-fill {
+  height: 100%; width: 0%; background: linear-gradient(90deg, var(--gold), var(--gold-bright));
+  box-shadow: 0 0 12px var(--gold-glow); transition: width 0.1s linear;
+}
+
+/* ── flowchart section ── */
+.flowchart-section {
+  padding: 60px var(--gutter); position: relative; z-index: 2;
+}
+.flowchart-wrap {
+  max-width: var(--maxw); margin: 0 auto;
+  background: var(--surface); border: 1px solid var(--line);
+  border-radius: var(--radius); padding: 40px;
+  overflow-x: auto;
+}
+.flowchart-wrap svg { min-width: 1000px; }
+
+/* ── section header ── */
+.section-header {
+  text-align: center; padding: 80px var(--gutter) 40px; position: relative; z-index: 2;
+}
+.section-header h2 {
+  font-family: var(--sans); font-weight: 700; font-size: clamp(28px, 3.5vw, 44px);
+  letter-spacing: -0.025em; color: var(--white); margin-bottom: 12px;
+}
+.section-header p { font-size: 16px; color: var(--muted); max-width: 48ch; margin: 0 auto; }
+
+/* ── phase timeline ── */
+.timeline {
+  max-width: var(--maxw); margin: 0 auto; padding: 40px var(--gutter) 80px;
+  position: relative; z-index: 2;
+}
+.timeline::before {
+  content: ''; position: absolute; left: calc(var(--gutter) + 19px); top: 60px; bottom: 100px;
+  width: 2px; background: linear-gradient(180deg, var(--gold), rgba(217,164,65,0.1));
+}
+@media (max-width: 700px) {
+  .timeline::before { left: 19px; }
+}
+
+/* ── phase card ── */
+.phase {
+  display: grid; grid-template-columns: 48px 1fr; gap: 24px;
+  margin-bottom: 48px; position: relative; opacity: 0; transform: translateY(30px);
+  transition: opacity 0.6s var(--ease), transform 0.6s var(--ease);
+}
+.phase.visible { opacity: 1; transform: translateY(0); }
+.phase:last-child { margin-bottom: 0; }
+
+.phase-badge {
+  width: 40px; height: 40px; border-radius: 12px;
+  display: flex; align-items: center; justify-content: center;
+  font-family: var(--mono); font-size: 14px; font-weight: 600;
+  color: var(--white); flex-shrink: 0;
+  position: relative; z-index: 2;
+}
+.phase-badge::before {
+  content: ''; position: absolute; inset: -4px; border-radius: 14px; z-index: -1;
+  opacity: 0.25; filter: blur(12px);
+}
+
+.phase-badge.p0 { background: linear-gradient(135deg, #8B6914, #C49A2C); }
+.phase-badge.p0::before { background: #D9A441; }
+.phase-badge.p1 { background: linear-gradient(135deg, #1A7A8C, #2DB4CC); }
+.phase-badge.p1::before { background: #5DD9F0; }
+.phase-badge.p2 { background: linear-gradient(135deg, #2A7A4A, #3DBF6E); }
+.phase-badge.p2::before { background: #74D69B; }
+.phase-badge.p3 { background: linear-gradient(135deg, #5A3A9C, #8B6FCC); }
+.phase-badge.p3::before { background: #B79CFF; }
+.phase-badge.p4 { background: linear-gradient(135deg, #8C2A3A, #CC4A5E); }
+.phase-badge.p4::before { background: #F09590; }
+
+.phase-content {
+  background: var(--surface); border: 1px solid var(--line);
+  border-radius: var(--radius); padding: 28px 32px;
+}
+.phase-content h3 {
+  font-family: var(--sans); font-weight: 700; font-size: clamp(20px, 2.2vw, 26px);
+  letter-spacing: -0.02em; color: var(--white); margin-bottom: 6px;
+}
+.phase-meta {
+  display: inline-flex; align-items: center; gap: 8px;
+  font-size: 12.5px; color: var(--muted-2); margin-bottom: 16px;
+}
+.phase-meta .dot { width: 5px; height: 5px; border-radius: 50%; background: var(--gold); }
+.phase-content > p {
+  font-size: 15px; color: var(--muted); line-height: 1.65; max-width: 58ch;
+}
+.phase-actions {
+  display: flex; flex-wrap: wrap; gap: 8px; margin-top: 20px;
+}
+.chip {
+  font-size: 12px; font-weight: 500;
+  padding: 6px 14px; border-radius: 100px;
+  border: 1px solid var(--line); color: var(--muted);
+  background: rgba(255,255,255,0.02);
+}
+.chip.active { border-color: var(--gold); color: var(--gold-bright); background: rgba(217,164,65,0.08); }
+.chip.tbd    { border-color: var(--line-2); color: var(--faint); }
+
+/* ── function cards grid ── */
+.function-grid {
+  max-width: var(--maxw); margin: 0 auto; padding: 20px var(--gutter) 60px;
+  display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px;
+  position: relative; z-index: 2;
+}
+@media (max-width: 900px) { .function-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 500px) { .function-grid { grid-template-columns: 1fr; } }
+
+.function-card {
+  background: var(--surface); border: 1px solid var(--line);
+  border-radius: var(--radius); padding: 24px;
+  opacity: 0; transform: translateY(24px);
+  transition: opacity 0.5s var(--ease), transform 0.5s var(--ease), border-color 0.3s;
+}
+.function-card.visible { opacity: 1; transform: translateY(0); }
+.function-card:hover { border-color: var(--line-2); }
+.function-card h4 { font-size: 16px; font-weight: 600; color: var(--white); margin-bottom: 8px; }
+.function-card p { font-size: 13.5px; color: var(--muted); line-height: 1.55; }
+.function-card .chip { margin-top: 12px; display: inline-block; }
+
+/* ── flowchart nodes (draw-on-scroll) ── */
+.flow-node {
+  opacity: 0; transform: scale(0.92);
+  transition: opacity 0.5s var(--ease), transform 0.5s var(--ease);
+}
+.flow-node.visible { opacity: 1; transform: scale(1); }
+
+.flow-arrow {
+  stroke-dasharray: 200; stroke-dashoffset: 200;
+  transition: stroke-dashoffset 0.8s var(--ease);
+}
+.flow-arrow.visible { stroke-dashoffset: 0; }
+
+/* ── footer cta ── */
+.cta-section {
+  padding: 80px var(--gutter); text-align: center; position: relative; z-index: 2;
+  border-top: 1px solid var(--line); margin-top: 40px;
+}
+.cta-section h2 {
+  font-family: var(--sans); font-weight: 700; font-size: clamp(26px, 3.2vw, 40px);
+  letter-spacing: -0.025em; color: var(--white); margin-bottom: 16px;
+}
+.cta-section p { font-size: 16px; color: var(--muted); margin-bottom: 28px; }
+.cta-btn {
+  display: inline-flex; align-items: center; gap: 0.6em;
+  font-size: 14.5px; font-weight: 500; letter-spacing: 0.01em;
+  padding: 14px 28px; border-radius: 100px;
+  background: var(--cream); color: #14110a;
+  box-shadow: 0 1px 0 rgba(255,255,255,0.4) inset, 0 14px 40px -16px rgba(217,164,65,0.55);
+  transition: transform 0.4s var(--ease), background 0.3s, box-shadow 0.4s;
+}
+.cta-btn:hover { background: var(--gold-bright); transform: translateY(-2px); box-shadow: 0 20px 50px -16px rgba(217,164,65,0.7); }
+
+.footer-mini {
+  text-align: center; padding: 24px var(--gutter) 40px;
+  font-size: 12.5px; color: var(--faint);
+}
+
+/* ── responsive ── */
+@media (max-width: 700px) {
+  .flowchart-wrap { padding: 20px; }
+  .phase-content { padding: 20px 22px; }
+  .timeline::before { display: none; }
+  .phase { grid-template-columns: 36px 1fr; gap: 14px; }
+  .phase-badge { width: 32px; height: 32px; font-size: 12px; border-radius: 10px; }
+}
+</style>
+</head>
+<body>
+
+<div class="grain"></div>
+
+<!-- progress bar -->
+<div class="progress-track"><div class="progress-fill" id="progressBar"></div></div>
+
+<!-- nav -->
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="/" class="nav-logo">Ag<span>8</span>ntify</a>
+    <a href="/" class="nav-back">&larr; Back to site</a>
+  </div>
+</nav>
+
+<!-- hero -->
+<header class="hero">
+  <div class="eyebrow">Marketing Department</div>
+  <h1>AI Integration &<br>Readiness Roadmap</h1>
+  <p class="lead">A phased deployment from baseline process mapping through autonomous AI operations — designed for measurable outcomes, not hype.</p>
+</header>
+
+<!-- flowchart -->
+<section class="flowchart-section" id="flowchart">
+  <div class="flowchart-wrap">
+    <svg viewBox="0 0 1060 1120" width="100%" height="auto" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <marker id="ah" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0 0,10 3.5,0 7" fill="#64748b"/></marker>
+        <marker id="ah-gold" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0 0,10 3.5,0 7" fill="#D9A441"/></marker>
+        <marker id="ah-cyan" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0 0,10 3.5,0 7" fill="#5DD9F0"/></marker>
+        <marker id="ah-green" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0 0,10 3.5,0 7" fill="#74D69B"/></marker>
+        <marker id="ah-violet" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0 0,10 3.5,0 7" fill="#B79CFF"/></marker>
+        <filter id="glow-gold" x="-30%" y="-30%" width="160%" height="160%"><feGaussianBlur stdDeviation="4" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+      </defs>
+      <rect width="1060" height="1120" fill="transparent"/>
+
+      <!-- ===================== PHASE 0 ===================== -->
+      <rect class="flow-node" x="30" y="20" width="1000" height="160" rx="12" fill="rgba(217,164,65,0.03)" stroke="#D9A441" stroke-width="1" stroke-dasharray="8,4"/>
+      <text x="46" y="42" fill="#D9A441" font-size="11" font-weight="600" font-family="Inter,sans-serif">Phase 0: Process Mapping & Baseline</text>
+      <text x="860" y="42" fill="#6c6f74" font-size="9" font-family="Inter,sans-serif">Deadline: June 30th</text>
+
+      <rect class="flow-node" x="70" y="62" width="280" height="90" rx="8" fill="rgba(13,13,13,0.9)" stroke="#D9A441" stroke-width="1.5"/>
+      <rect class="flow-node" x="70" y="62" width="280" height="90" rx="8" fill="rgba(217,164,65,0.06)" stroke="none"/>
+      <text x="210" y="95" fill="#fff" font-size="12" font-weight="600" font-family="Inter,sans-serif" text-anchor="middle">Document Current Workflows</text>
+      <text x="210" y="115" fill="#9ea1a6" font-size="9" font-family="Inter,sans-serif" text-anchor="middle">Chart procedures & handoffs</text>
+      <text x="210" y="130" fill="#9ea1a6" font-size="9" font-family="Inter,sans-serif" text-anchor="middle">across the department</text>
+
+      <rect class="flow-node" x="400" y="62" width="280" height="90" rx="8" fill="rgba(13,13,13,0.9)" stroke="#D9A441" stroke-width="1.5"/>
+      <rect class="flow-node" x="400" y="62" width="280" height="90" rx="8" fill="rgba(217,164,65,0.06)" stroke="none"/>
+      <text x="540" y="95" fill="#fff" font-size="12" font-weight="600" font-family="Inter,sans-serif" text-anchor="middle">Identify Gaps & Bottlenecks</text>
+      <text x="540" y="115" fill="#9ea1a6" font-size="9" font-family="Inter,sans-serif" text-anchor="middle">Broken workflows &</text>
+      <text x="540" y="130" fill="#9ea1a6" font-size="9" font-family="Inter,sans-serif" text-anchor="middle">improvement areas</text>
+
+      <rect class="flow-node" x="730" y="62" width="280" height="90" rx="8" fill="rgba(13,13,13,0.9)" stroke="#D9A441" stroke-width="1.5"/>
+      <rect class="flow-node" x="730" y="62" width="280" height="90" rx="8" fill="rgba(217,164,65,0.06)" stroke="none"/>
+      <text x="870" y="95" fill="#fff" font-size="12" font-weight="600" font-family="Inter,sans-serif" text-anchor="middle">Establish Baseline Metrics</text>
+      <text x="870" y="115" fill="#9ea1a6" font-size="9" font-family="Inter,sans-serif" text-anchor="middle">Pre-AI performance data</text>
+      <text x="870" y="130" fill="#9ea1a6" font-size="9" font-family="Inter,sans-serif" text-anchor="middle">for future comparison</text>
+
+      <line class="flow-arrow" x1="350" y1="107" x2="398" y2="107" stroke="#D9A441" stroke-width="1.5" marker-end="url(#ah-gold)"/>
+      <line class="flow-arrow" x1="680" y1="107" x2="728" y2="107" stroke="#D9A441" stroke-width="1.5" marker-end="url(#ah-gold)"/>
+      <path class="flow-arrow" d="M 870 152 L 870 182 Q 870 200 850 200 L 560 200 Q 530 200 530 218 L 530 238" fill="none" stroke="#D9A441" stroke-width="1.5" marker-end="url(#ah-gold)"/>
+
+      <!-- ===================== PHASE 1 ===================== -->
+      <rect class="flow-node" x="30" y="250" width="1000" height="210" rx="12" fill="rgba(93,217,240,0.03)" stroke="#5DD9F0" stroke-width="1" stroke-dasharray="8,4"/>
+      <text x="46" y="272" fill="#5DD9F0" font-size="11" font-weight="600" font-family="Inter,sans-serif">Phase 1: Foundation & Literacy</text>
+      <text x="840" y="272" fill="#6c6f74" font-size="9" font-family="Inter,sans-serif">July 3rd – July 17th</text>
+
+      <rect class="flow-node" x="70" y="292" width="220" height="80" rx="8" fill="rgba(13,13,13,0.9)" stroke="#5DD9F0" stroke-width="1.5"/>
+      <rect class="flow-node" x="70" y="292" width="220" height="80" rx="8" fill="rgba(93,217,240,0.06)" stroke="none"/>
+      <text x="180" y="322" fill="#fff" font-size="12" font-weight="600" font-family="Inter,sans-serif" text-anchor="middle">Identify Key Players</text>
+      <text x="180" y="340" fill="#9ea1a6" font-size="9" font-family="Inter,sans-serif" text-anchor="middle">Fast adopters for AI stack</text>
+      <text x="180" y="355" fill="#9ea1a6" font-size="9" font-family="Inter,sans-serif" text-anchor="middle">training & rollout</text>
+
+      <rect class="flow-node" x="330" y="292" width="240" height="80" rx="8" fill="rgba(13,13,13,0.9)" stroke="#5DD9F0" stroke-width="1.5"/>
+      <rect class="flow-node" x="330" y="292" width="240" height="80" rx="8" fill="rgba(93,217,240,0.06)" stroke="none"/>
+      <text x="450" y="322" fill="#fff" font-size="12" font-weight="600" font-family="Inter,sans-serif" text-anchor="middle">Two-Week Intensive Training</text>
+      <text x="450" y="340" fill="#9ea1a6" font-size="9" font-family="Inter,sans-serif" text-anchor="middle">AI tools, skills, connectors,</text>
+      <text x="450" y="355" fill="#9ea1a6" font-size="9" font-family="Inter,sans-serif" text-anchor="middle">folder structure & prompting</text>
+
+      <rect class="flow-node" x="610" y="292" width="240" height="80" rx="8" fill="rgba(13,13,13,0.9)" stroke="#5DD9F0" stroke-width="1.5"/>
+      <rect class="flow-node" x="610" y="292" width="240" height="80" rx="8" fill="rgba(93,217,240,0.06)" stroke="none"/>
+      <text x="730" y="322" fill="#fff" font-size="12" font-weight="600" font-family="Inter,sans-serif" text-anchor="middle">Create Loom Library</text>
+      <text x="730" y="340" fill="#9ea1a6" font-size="9" font-family="Inter,sans-serif" text-anchor="middle">Video knowledge base of</text>
+      <text x="730" y="355" fill="#9ea1a6" font-size="9" font-family="Inter,sans-serif" text-anchor="middle">key functionalities</text>
+
+      <rect class="flow-node" x="220" y="395" width="260" height="50" rx="8" fill="rgba(13,13,13,0.9)" stroke="#5DD9F0" stroke-width="1.5"/>
+      <rect class="flow-node" x="220" y="395" width="260" height="50" rx="8" fill="rgba(93,217,240,0.06)" stroke="none"/>
+      <text x="350" y="418" fill="#fff" font-size="11" font-weight="600" font-family="Inter,sans-serif" text-anchor="middle">Pinpoint AI Integration Points</text>
+      <text x="350" y="434" fill="#9ea1a6" font-size="8" font-family="Inter,sans-serif" text-anchor="middle">Using Phase 0 process maps</text>
+
+      <rect class="flow-node" x="540" y="395" width="260" height="50" rx="8" fill="rgba(13,13,13,0.9)" stroke="#5DD9F0" stroke-width="1.5"/>
+      <rect class="flow-node" x="540" y="395" width="260" height="50" rx="8" fill="rgba(93,217,240,0.06)" stroke="none"/>
+      <text x="670" y="418" fill="#fff" font-size="11" font-weight="600" font-family="Inter,sans-serif" text-anchor="middle">Assign Adoption Owners</text>
+      <text x="670" y="434" fill="#9ea1a6" font-size="8" font-family="Inter,sans-serif" text-anchor="middle">Authority + freed-up time to lead</text>
+
+      <line class="flow-arrow" x1="290" y1="332" x2="328" y2="332" stroke="#5DD9F0" stroke-width="1.5" marker-end="url(#ah-cyan)"/>
+      <line class="flow-arrow" x1="570" y1="332" x2="608" y2="332" stroke="#5DD9F0" stroke-width="1.5" marker-end="url(#ah-cyan)"/>
+      <line class="flow-arrow" x1="450" y1="372" x2="450" y2="393" stroke="#5DD9F0" stroke-width="1.5" marker-end="url(#ah-cyan)"/>
+      <line class="flow-arrow" x1="350" y1="445" x2="350" y2="468" stroke="#5DD9F0" stroke-width="1.5" marker-end="url(#ah-cyan)"/>
+      <line class="flow-arrow" x1="670" y1="445" x2="670" y2="468" stroke="#5DD9F0" stroke-width="1.5" marker-end="url(#ah-cyan)"/>
+
+      <!-- ===================== PHASE 2 ===================== -->
+      <rect class="flow-node" x="30" y="480" width="1000" height="320" rx="12" fill="rgba(116,214,155,0.03)" stroke="#74D69B" stroke-width="1" stroke-dasharray="8,4"/>
+      <text x="46" y="502" fill="#74D69B" font-size="11" font-weight="600" font-family="Inter,sans-serif">Phase 2: Integration by Function</text>
+      <text x="890" y="502" fill="#6c6f74" font-size="9" font-family="Inter,sans-serif">July 20th – TBD</text>
+      <text x="46" y="522" fill="#6c6f74" font-size="9" font-family="Inter,sans-serif" max-width="920">Embed AI into each area of Marketing one function at a time. Each team uses mapped workflows to spot where AI</text>
+      <text x="46" y="535" fill="#6c6f74" font-size="9" font-family="Inter,sans-serif">can draft, analyze, generate, or speed up the work.</text>
+
+      <rect class="flow-node" x="60" y="555" width="220" height="110" rx="8" fill="rgba(13,13,13,0.9)" stroke="#74D69B" stroke-width="1.5"/>
+      <rect class="flow-node" x="60" y="555" width="220" height="110" rx="8" fill="rgba(116,214,155,0.06)" stroke="none"/>
+      <text x="170" y="585" fill="#fff" font-size="12" font-weight="600" font-family="Inter,sans-serif" text-anchor="middle">Paid Media</text>
+      <text x="170" y="605" fill="#9ea1a6" font-size="9" font-family="Inter,sans-serif" text-anchor="middle">AI-supported reporting,</text>
+      <text x="170" y="620" fill="#9ea1a6" font-size="9" font-family="Inter,sans-serif" text-anchor="middle">optimization & creative</text>
+      <text x="170" y="635" fill="#9ea1a6" font-size="9" font-family="Inter,sans-serif" text-anchor="middle">production</text>
+      <text x="170" y="652" fill="#D9A441" font-size="9" font-weight="600" font-family="Inter,sans-serif" text-anchor="middle">In Progress</text>
+
+      <rect class="flow-node" x="310" y="555" width="220" height="110" rx="8" fill="rgba(13,13,13,0.9)" stroke="#74D69B" stroke-width="1.5"/>
+      <rect class="flow-node" x="310" y="555" width="220" height="110" rx="8" fill="rgba(116,214,155,0.06)" stroke="none"/>
+      <text x="420" y="585" fill="#fff" font-size="12" font-weight="600" font-family="Inter,sans-serif" text-anchor="middle">Content & SEO</text>
+      <text x="420" y="605" fill="#9ea1a6" font-size="9" font-family="Inter,sans-serif" text-anchor="middle">AI-driven keyword research,</text>
+      <text x="420" y="620" fill="#9ea1a6" font-size="9" font-family="Inter,sans-serif" text-anchor="middle">ranking content & technical</text>
+      <text x="420" y="635" fill="#9ea1a6" font-size="9" font-family="Inter,sans-serif" text-anchor="middle">site audits</text>
+      <text x="420" y="652" fill="#6c6f74" font-size="9" font-family="Inter,sans-serif" text-anchor="middle">In Documentation</text>
+
+      <rect class="flow-node" x="560" y="555" width="220" height="110" rx="8" fill="rgba(13,13,13,0.9)" stroke="#74D69B" stroke-width="1.5"/>
+      <rect class="flow-node" x="560" y="555" width="220" height="110" rx="8" fill="rgba(116,214,155,0.06)" stroke="none"/>
+      <text x="670" y="585" fill="#fff" font-size="12" font-weight="600" font-family="Inter,sans-serif" text-anchor="middle">Ecom</text>
+      <text x="670" y="605" fill="#9ea1a6" font-size="9" font-family="Inter,sans-serif" text-anchor="middle">AI-assisted development &</text>
+      <text x="670" y="620" fill="#9ea1a6" font-size="9" font-family="Inter,sans-serif" text-anchor="middle">rapid iteration of landing</text>
+      <text x="670" y="635" fill="#9ea1a6" font-size="9" font-family="Inter,sans-serif" text-anchor="middle">pages</text>
+      <text x="670" y="652" fill="#6c6f74" font-size="9" font-family="Inter,sans-serif" text-anchor="middle">In Documentation</text>
+
+      <rect class="flow-node" x="810" y="555" width="200" height="110" rx="8" fill="rgba(13,13,13,0.9)" stroke="#74D69B" stroke-width="1.5"/>
+      <rect class="flow-node" x="810" y="555" width="200" height="110" rx="8" fill="rgba(116,214,155,0.06)" stroke="none"/>
+      <text x="910" y="585" fill="#fff" font-size="12" font-weight="600" font-family="Inter,sans-serif" text-anchor="middle">Market Research & Product</text>
+      <text x="910" y="605" fill="#9ea1a6" font-size="9" font-family="Inter,sans-serif" text-anchor="middle">AI-powered trend monitoring</text>
+      <text x="910" y="620" fill="#9ea1a6" font-size="9" font-family="Inter,sans-serif" text-anchor="middle">& intelligence gathering</text>
+      <text x="910" y="652" fill="#6c6f74" font-size="9" font-family="Inter,sans-serif" text-anchor="middle">TBD</text>
+
+      <rect class="flow-node" x="60" y="695" width="950" height="80" rx="8" fill="rgba(13,13,13,0.9)" stroke="#74D69B" stroke-width="1" stroke-dasharray="4,4"/>
+      <text x="80" y="720" fill="#74D69B" font-size="10" font-weight="600" font-family="Inter,sans-serif">Key Artifacts</text>
+      <text x="80" y="742" fill="#9ea1a6" font-size="9" font-family="Inter,sans-serif">Paid_Media_Content_Generation_Process_v2_2.docx</text>
+      <text x="80" y="758" fill="#9ea1a6" font-size="9" font-family="Inter,sans-serif">Paid Media Daily Performance Report v1</text>
+
+      <path class="flow-arrow" d="M 530 805 L 530 830 Q 530 850 510 850 L 320 850 Q 300 850 300 870 L 300 888" fill="none" stroke="#74D69B" stroke-width="1.5" marker-end="url(#ah-green)"/>
+      <path class="flow-arrow" d="M 530 805 L 530 830 Q 530 850 510 850 L 760 850 Q 780 850 780 870 L 780 888" fill="none" stroke="#74D69B" stroke-width="1.5" marker-end="url(#ah-green)"/>
+
+      <!-- ===================== PHASE 3 ===================== -->
+      <rect class="flow-node" x="30" y="890" width="1000" height="110" rx="12" fill="rgba(183,156,255,0.03)" stroke="#B79CFF" stroke-width="1" stroke-dasharray="8,4"/>
+      <text x="46" y="912" fill="#B79CFF" font-size="11" font-weight="600" font-family="Inter,sans-serif">Phase 3: Agents & Scale</text>
+      <text x="950" y="912" fill="#6c6f74" font-size="9" font-family="Inter,sans-serif">TBD</text>
+
+      <rect class="flow-node" x="60" y="930" width="300" height="50" rx="8" fill="rgba(13,13,13,0.9)" stroke="#B79CFF" stroke-width="1.5"/>
+      <rect class="flow-node" x="60" y="930" width="300" height="50" rx="8" fill="rgba(183,156,255,0.06)" stroke="none"/>
+      <text x="210" y="955" fill="#fff" font-size="11" font-weight="600" font-family="Inter,sans-serif" text-anchor="middle">Expand Paid Media Agent</text>
+      <text x="210" y="970" fill="#9ea1a6" font-size="8" font-family="Inter,sans-serif" text-anchor="middle">Daily reporting → full automation suite</text>
+
+      <rect class="flow-node" x="390" y="930" width="300" height="50" rx="8" fill="rgba(13,13,13,0.9)" stroke="#B79CFF" stroke-width="1.5"/>
+      <rect class="flow-node" x="390" y="930" width="300" height="50" rx="8" fill="rgba(183,156,255,0.06)" stroke="none"/>
+      <text x="540" y="955" fill="#fff" font-size="11" font-weight="600" font-family="Inter,sans-serif" text-anchor="middle">New Agents: Content & Research</text>
+      <text x="540" y="970" fill="#9ea1a6" font-size="8" font-family="Inter,sans-serif" text-anchor="middle">Reporting, content, and research agents</text>
+
+      <rect class="flow-node" x="720" y="930" width="300" height="50" rx="8" fill="rgba(13,13,13,0.9)" stroke="#B79CFF" stroke-width="1.5"/>
+      <rect class="flow-node" x="720" y="930" width="300" height="50" rx="8" fill="rgba(183,156,255,0.06)" stroke="none"/>
+      <text x="870" y="955" fill="#fff" font-size="11" font-weight="600" font-family="Inter,sans-serif" text-anchor="middle">Anchor to Improved Workflows</text>
+      <text x="870" y="970" fill="#9ea1a6" font-size="8" font-family="Inter,sans-serif" text-anchor="middle">Centralized data, human decisions</text>
+
+      <line class="flow-arrow" x1="360" y1="955" x2="388" y2="955" stroke="#B79CFF" stroke-width="1.5" marker-end="url(#ah-violet)"/>
+      <line class="flow-arrow" x1="690" y1="955" x2="718" y2="955" stroke="#B79CFF" stroke-width="1.5" marker-end="url(#ah-violet)"/>
+
+      <path class="flow-arrow" d="M 870 980 L 870 1000 Q 870 1020 850 1020 L 560 1020 Q 530 1020 530 1038 L 530 1058" fill="none" stroke="#B79CFF" stroke-width="1.5" marker-end="url(#ah-violet)"/>
+
+      <!-- ===================== PHASE 4 ===================== -->
+      <rect class="flow-node" x="30" y="1060" width="1000" height="50" rx="12" fill="rgba(240,149,144,0.03)" stroke="#F09590" stroke-width="1" stroke-dasharray="8,4"/>
+      <text x="46" y="1082" fill="#F09590" font-size="11" font-weight="600" font-family="Inter,sans-serif">Phase 4: Measure, Govern & Sustain</text>
+
+      <rect class="flow-node" x="55" y="1068" width="225" height="30" rx="6" fill="rgba(140,42,58,0.4)" stroke="#F09590" stroke-width="1.5"/>
+      <text x="167" y="1088" fill="#fff" font-size="9" font-weight="600" font-family="Inter,sans-serif" text-anchor="middle">Track Outcomes vs Baseline</text>
+      <rect class="flow-node" x="300" y="1068" width="225" height="30" rx="6" fill="rgba(140,42,58,0.4)" stroke="#F09590" stroke-width="1.5"/>
+      <text x="412" y="1088" fill="#fff" font-size="9" font-weight="600" font-family="Inter,sans-serif" text-anchor="middle">Consolidate Overlapping Tools</text>
+      <rect class="flow-node" x="545" y="1068" width="225" height="30" rx="6" fill="rgba(140,42,58,0.4)" stroke="#F09590" stroke-width="1.5"/>
+      <text x="657" y="1088" fill="#fff" font-size="9" font-weight="600" font-family="Inter,sans-serif" text-anchor="middle">Define Ownership & Maintenance</text>
+      <rect class="flow-node" x="790" y="1068" width="225" height="30" rx="6" fill="rgba(140,42,58,0.4)" stroke="#F09590" stroke-width="1.5"/>
+      <text x="902" y="1088" fill="#fff" font-size="9" font-weight="600" font-family="Inter,sans-serif" text-anchor="middle">Embed into Standard Practice</text>
+    </svg>
+  </div>
+</section>
+
+<!-- phase detail timeline -->
+<section class="section-header" id="phases">
+  <h2>Deployment Phases</h2>
+  <p>Scroll through each phase to understand deliverables, timelines, and what "done" looks like.</p>
+</section>
+
+<div class="timeline">
+
+  <div class="phase" data-phase="0">
+    <div class="phase-badge p0">0</div>
+    <div class="phase-content">
+      <h3>Process Mapping & Baseline</h3>
+      <div class="phase-meta"><span class="dot"></span> Deadline: June 30th</div>
+      <p>Document and chart how Marketing works today, including current workflows, procedures, and handoffs across the department. Identify gaps and improve broken workflows before introducing AI.</p>
+      <div class="phase-actions">
+        <span class="chip">Workflow Mapping</span>
+        <span class="chip">Gap Analysis</span>
+        <span class="chip">Baseline Metrics</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="phase" data-phase="1">
+    <div class="phase-badge p1">1</div>
+    <div class="phase-content">
+      <h3>Foundation & Literacy</h3>
+      <div class="phase-meta"><span class="dot"></span> July 3rd – July 17th</div>
+      <p>Identify the key players for fast adoption of our AI stack and run a two-week intensive training session for those individuals. Create a Loom library of key functionalities. Using the process maps from Phase 0, pinpoint which steps AI can help with. Put specific people in charge of driving adoption, and give them the authority and freed-up time to lead it.</p>
+      <div class="phase-actions">
+        <span class="chip">Key Player Identification</span>
+        <span class="chip active">Intensive Training</span>
+        <span class="chip">Loom Library</span>
+        <span class="chip">Adoption Owners</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="phase" data-phase="2">
+    <div class="phase-badge p2">2</div>
+    <div class="phase-content">
+      <h3>Integration by Function</h3>
+      <div class="phase-meta"><span class="dot"></span> July 20th – TBD</div>
+      <p>Embed AI into each area of Marketing one function at a time. Each team uses its mapped workflows to spot where AI can draft, analyze, generate, or speed up the work, then builds it into those steps.</p>
+    </div>
+  </div>
+
+</div>
+
+<!-- function grid -->
+<div class="function-grid">
+  <div class="function-card" data-delay="0">
+    <h4>Paid Media</h4>
+    <p>AI-supported reporting, optimization, and creative production. Currently in progress.</p>
+    <span class="chip active">In Progress</span>
+  </div>
+  <div class="function-card" data-delay="1">
+    <h4>Content & SEO</h4>
+    <p>AI-driven keyword research, ranking content, and technical site audits across all sites.</p>
+    <span class="chip">In Documentation</span>
+  </div>
+  <div class="function-card" data-delay="2">
+    <h4>Ecom</h4>
+    <p>AI-assisted development and rapid iteration of landing pages.</p>
+    <span class="chip">In Documentation</span>
+  </div>
+  <div class="function-card" data-delay="3">
+    <h4>Market Research & Product</h4>
+    <p>AI-powered trend monitoring and intelligence gathering.</p>
+    <span class="chip tbd">TBD</span>
+  </div>
+</div>
+
+<div class="timeline">
+
+  <div class="phase" data-phase="3">
+    <div class="phase-badge p3">3</div>
+    <div class="phase-content">
+      <h3>Agents & Scale</h3>
+      <div class="phase-meta"><span class="dot"></span> TBD</div>
+      <p>Expand from the existing daily Paid Media agent to agents across reporting, content, and research, all anchored to the improved workflows and centralized data. Keep humans on the decisions that matter.</p>
+      <div class="phase-actions">
+        <span class="chip">Multi-Agent Deployment</span>
+        <span class="chip">Centralized Data</span>
+        <span class="chip">Human-in-the-Loop</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="phase" data-phase="4">
+    <div class="phase-badge p4">4</div>
+    <div class="phase-content">
+      <h3>Measure, Govern & Sustain</h3>
+      <div class="phase-meta"><span class="dot"></span> Ongoing</div>
+      <p>Track outcomes against baseline. Consolidate overlapping tools. Define who maintains agents, updates workflow maps, and trains new hires. Embed AI into standard practice.</p>
+      <div class="phase-actions">
+        <span class="chip active">Track Outcomes</span>
+        <span class="chip">Tool Consolidation</span>
+        <span class="chip">Governance Model</span>
+        <span class="chip active">Standard Practice</span>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- CTA -->
+<section class="cta-section">
+  <h2>Ready to deploy AI in your<br>Marketing department?</h2>
+  <p>Start with Phase 0. Map your workflows. Find your gaps. Build the baseline.<br>Then let AI do what it does best — scale.</p>
+  <a href="/" class="cta-btn">Book a strategy call &rarr;</a>
+</section>
+
+<div class="footer-mini">Ag8ntify Marketing — AI Integration Roadmap v1.0</div>
+
+<script>
+/* ── progress bar ── */
+window.addEventListener('scroll', () => {
+  const h = document.documentElement.scrollHeight - window.innerHeight;
+  document.getElementById('progressBar').style.width = (window.scrollY / h * 100) + '%';
+});
+
+/* ── intersection observer for scroll animations ── */
+const io = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      // stagger elements within the same container by their data-delay
+      const delay = e.target.dataset.delay ? parseInt(e.target.dataset.delay) * 120 : 0;
+      setTimeout(() => e.target.classList.add('visible'), delay);
+    }
+  });
+}, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+
+// observe phases
+document.querySelectorAll('.phase').forEach(el => io.observe(el));
+
+// observe function cards
+const cardIo = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      const delay = e.target.dataset.delay ? parseInt(e.target.dataset.delay) * 150 : 0;
+      setTimeout(() => e.target.classList.add('visible'), delay);
+    }
+  });
+}, { threshold: 0.15, rootMargin: '0px 0px -30px 0px' });
+document.querySelectorAll('.function-card').forEach(el => cardIo.observe(el));
+
+/* ── flowchart draw-on-scroll ── */
+const flowIo = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      const nodes = e.target.querySelectorAll('.flow-node, .flow-arrow');
+      nodes.forEach((node, i) => {
+        setTimeout(() => node.classList.add('visible'), i * 80);
+      });
+    }
+  });
+}, { threshold: 0.08 });
+document.querySelectorAll('.flowchart-wrap svg').forEach(svg => flowIo.observe(svg));
+</script>
+
+</body>
+</html>
